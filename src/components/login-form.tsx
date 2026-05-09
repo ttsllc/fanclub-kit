@@ -23,7 +23,7 @@ export function LoginForm({
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-4 max-w-md">
+    <form onSubmit={onSubmit} className="grid gap-4 w-full">
       <label className="grid gap-1.5">
         <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-[hsl(var(--primary))]/80">
           メールアドレス

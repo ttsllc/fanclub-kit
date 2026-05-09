@@ -34,7 +34,7 @@ export function SignupForm({
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-4 max-w-md">
+    <form onSubmit={onSubmit} className="grid gap-4 w-full">
       <input type="hidden" name="tenantId" value={config.tenantId} />
       <input type="hidden" name="tierId" defaultValue={defaultTierId} />
       <Field label="メールアドレス">
