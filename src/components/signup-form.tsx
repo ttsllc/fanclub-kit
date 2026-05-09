@@ -65,6 +65,23 @@ export function SignupForm({
       {status === 'err' && (
         <p className="text-sm text-[hsl(var(--destructive,_0_78%_58%))]">⚠ 登録失敗 ({error})</p>
       )}
+      <style>{`
+        .ec-input {
+          background: hsl(var(--card-elevated));
+          border: 1px solid hsl(var(--border));
+          border-radius: 0.625rem;
+          padding: 0.625rem 0.875rem;
+          color: hsl(var(--foreground));
+          font-size: 0.875rem;
+          width: 100%;
+          transition: border-color 120ms ease, box-shadow 120ms ease;
+        }
+        .ec-input:focus {
+          outline: none;
+          border-color: hsl(var(--primary));
+          box-shadow: 0 0 0 3px hsl(var(--primary) / 0.18);
+        }
+      `}</style>
     </form>
   );
 }
