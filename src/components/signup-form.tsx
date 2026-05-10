@@ -34,27 +34,39 @@ export function SignupForm({
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-4 w-full">
+    <form onSubmit={onSubmit} className="grid gap-6 w-full">
       <input type="hidden" name="tenantId" value={config.tenantId} />
       <input type="hidden" name="tierId" defaultValue={defaultTierId} />
-      <Field label="メールアドレス">
-        <input name="email" type="email" required maxLength={200} className="ec-input" autoComplete="email" />
-      </Field>
-      <Field label="パスワード (8文字以上)">
-        <input name="password" type="password" required minLength={8} maxLength={128} className="ec-input" autoComplete="new-password" />
-      </Field>
+
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
+        <Field label="メールアドレス">
+          <input name="email" type="email" required maxLength={200} className="ec-input" autoComplete="email" />
+        </Field>
+        <Field label="パスワード (8文字以上)">
+          <input name="password" type="password" required minLength={8} maxLength={128} className="ec-input" autoComplete="new-password" />
+        </Field>
+      </div>
+
       <Field label="表示名 (任意)">
         <input name="displayName" type="text" maxLength={80} className="ec-input" />
       </Field>
-      <label className="flex items-center gap-2 text-xs">
-        <input type="checkbox" name="agreeTos" required className="accent-[hsl(var(--primary))]" />
-        利用規約に同意します
-      </label>
-      <label className="flex items-center gap-2 text-xs">
-        <input type="checkbox" name="agreePrivacy" required className="accent-[hsl(var(--primary))]" />
-        プライバシーポリシーに同意します
-      </label>
-      <button type="submit" disabled={status === 'sending'} className="cta disabled:opacity-50">
+
+      <div className="flex flex-col sm:flex-row sm:flex-wrap gap-x-6 gap-y-2 text-xs pt-1">
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" name="agreeTos" required className="accent-[hsl(var(--primary))] w-4 h-4" />
+          利用規約に同意します
+        </label>
+        <label className="flex items-center gap-2 cursor-pointer">
+          <input type="checkbox" name="agreePrivacy" required className="accent-[hsl(var(--primary))] w-4 h-4" />
+          プライバシーポリシーに同意します
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        disabled={status === 'sending'}
+        className="cta justify-center disabled:opacity-50 mt-2"
+      >
         {status === 'sending' ? '登録中…' : '▸ 登録する'}
       </button>
       {status === 'ok' && (
